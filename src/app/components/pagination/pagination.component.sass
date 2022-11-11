@@ -1,0 +1,48 @@
+$RegularFont: 'NunitoSans Regular'
+$SemiBoldFont: 'NunitoSans SemiBold'
+$BoldFont: 'NunitoSans Bold'
+$BlackFont: 'NunitoSans Black'
+
+.pagination-container
+    margin: 40px 0 20px
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .page-number-container
+        padding: 0 4rem
+        color: #676767
+
+        .current-page-number
+            font-family: $SemiBoldFont
+            color: #000
+            margin-left: 8px
+
+    .btn
+        border: 1px solid #e0e0e0
+        padding: 10px 1rem
+        background-color: #fff
+        margin: 0 8px
+        font-size: 14px
+        font-family: $SemiBoldFont
+        cursor: pointer
+        border-radius: 5px
+        width: 150px
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        transition: all .3s
+
+        .ng-fa-icon
+            margin: 0 10px
+            color: #676767
+
+    .btn:hover:not(:disabled)
+        background: #000
+        color: #fff
+
+        .ng-fa-icon
+            color: #fff
+
+
+        

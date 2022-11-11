@@ -1,32 +1,5 @@
-<div class="search-container">
-    <input type="text" class="search-field" placeholder="Search..." />
-</div>
+<app-search></app-search>
 <div class="beer-list">
-    <div class="beer-item">
-        <div class="img-container">
-            <img src="https://images.punkapi.com/v2/2.png">
-        </div>
-        <div class="beer-info">
-            <h4>Buzz</h4>
-            <p>A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.</p>
-        </div>
-    </div>
-    <div class="beer-item">
-        <div class="img-container">
-            <img src="https://images.punkapi.com/v2/7.png">
-        </div>
-        <div class="beer-info">
-            <h4>Buzz</h4>
-            <p>A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.</p>
-        </div>
-    </div>
-    <div class="beer-item">
-        <div class="img-container">
-            <img src="https://images.punkapi.com/v2/5.png">
-        </div>
-        <div class="beer-info">
-            <h4>Buzz</h4>
-            <p>A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.</p>
-        </div>
-    </div>
+    <app-beer-item *ngFor="let beer of beers" [beerData]="beer"></app-beer-item>
 </div>
+<app-pagination startPage="startPage" (updatePageNumber)="updatePage($event)" [lastPage]="lastPage"></app-pagination>
