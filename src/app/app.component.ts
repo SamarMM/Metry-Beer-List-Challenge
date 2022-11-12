@@ -8,3 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'beer-list';
 }
+
+
+//Terminate http when call another one
+//Suggest search

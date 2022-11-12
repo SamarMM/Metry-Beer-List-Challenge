@@ -9,8 +9,13 @@ import { map, Observable } from 'rxjs';
 export class BeerService {
   constructor(private http: HttpClient) { }
 
-  getBeerList(PageNumber:number , PageLimit: number): Observable<Beer[]> {
+  getBeerList(SearchKey:string, PageNumber:number , PageLimit: number): Observable<Beer[]> {
     let apiUrl = `https://api.punkapi.com/v2/beers?page=${PageNumber}&per_page=${PageLimit}`;
+
+    if(SearchKey != null){
+      let modifiedSearchKey: string = SearchKey.toLocaleLowerCase().replace(/^\s+|\s+$/gm, '').replaceAll(/ /g, '_');
+      apiUrl = `https://api.punkapi.com/v2/beers?beer_name=${modifiedSearchKey}&page=${PageNumber}&per_page=${PageLimit}`;
+    }
     return this.http.get<Beer[]>(apiUrl)
       .pipe(map((res: any[]) => {
         return res.map((Beer: any) => {

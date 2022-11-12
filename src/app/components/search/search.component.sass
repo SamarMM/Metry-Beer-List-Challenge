@@ -1,3 +1,8 @@
+$RegularFont: 'NunitoSans Regular'
+$SemiBoldFont: 'NunitoSans SemiBold'
+$BoldFont: 'NunitoSans Bold'
+$BlackFont: 'NunitoSans Black'
+
 .search-container
     position: relative
     width: 80%
@@ -5,11 +10,18 @@
     display: flex
     align-items: center
 
-    .ng-fa-icon
+    button
         position: absolute
-        right: 1.5rem
+        right: 0
         font-size: 20px
-        color: #7f7f7f
+        color: #fff
+        background: #000
+        border: none
+        outline: none
+        height: 100%
+        width: 100px
+        border-radius: 0 50px 50px 0
+        cursor: pointer
 
     .search-field
         width: 100%
@@ -17,3 +29,32 @@
         padding: 1rem 2rem
         font-size: 16px
         border-radius: 50px
+        text-transform: capitalize
+
+    .suggested-search-list
+        position: absolute
+        top: 100%
+        left: 1rem
+        background: #fff
+        width: calc(100% - (100px + 1rem))
+        box-shadow: 1px 1px 5px rgb(0 0 0 / 30%)
+        border-radius: 0 0 5px 5px
+        margin: 0
+        padding: 0
+
+        li
+            list-style-type: none
+            padding: 12px 20px
+            border-bottom: 1px solid #eee
+            cursor: pointer
+            transition: all .3s ease-in
+            font-family: $BoldFont
+            font-size: 16px
+
+        li:hover
+            background: #eee
+
+        
+        li:last-child
+            border: none
+            

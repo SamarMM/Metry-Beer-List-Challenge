@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output , Input} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,12 +6,13 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.sass']
 })
+
 export class PaginationComponent implements OnInit {
-  startPage: number = 1;
-  isPrevDisabled:boolean = true;
-  isNextDisabled:boolean = false;
+  isPrevDisabled: boolean = false;
+  isNextDisabled: boolean = false;
   @Output() updatePageNumber = new EventEmitter<number>();
-  @Input() lastPage:boolean;
+  @Input() lastPage: boolean;
+  @Input() currentPageNumber: number;
 
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
@@ -19,27 +20,21 @@ export class PaginationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+    this.isNextDisabled = this.lastPage;
+    if (this.currentPageNumber == 1) {
+      this.isPrevDisabled = true;
+    }
   }
 
   handleClick(Action: string) {
-    this.isPrevDisabled = false;
-    this.isNextDisabled = false;
-
     if (Action == "Next") {
-      if(this.lastPage){
-        this.isNextDisabled = true;
-      }
-      this.startPage++;
-      this.updatePageNumber.emit(this.startPage);
+      this.currentPageNumber++;
+      this.updatePageNumber.emit(this.currentPageNumber);
     } else {
-      if (this.startPage > 1) {
-        this.startPage--;
-        this.updatePageNumber.emit(this.startPage);
-        if (this.startPage == 1){
-          this.isPrevDisabled = true;
-        }
-      } 
+      if (this.currentPageNumber > 1) {
+        this.currentPageNumber--;
+        this.updatePageNumber.emit(this.currentPageNumber);
+      }
     }
   }
 }
