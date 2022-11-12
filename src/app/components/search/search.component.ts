@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
       if (PreviousSearches != null) {
         PreviousSearchesArray = PreviousSearches.split(";");
         if (inputValue.replace(/^\s+|\s+$/gm, '') != "") {
-          this.searchItems = [...new Set(PreviousSearchesArray)].filter(item => item.toLocaleLowerCase().indexOf(inputValue.toLocaleLowerCase()) == 0);
+          this.searchItems = [...new Set(PreviousSearchesArray)].reverse().slice(0, 5).filter(item => item.toLocaleLowerCase().indexOf(inputValue.toLocaleLowerCase()) == 0);
         } else {
           this.searchItems = [];
         }
